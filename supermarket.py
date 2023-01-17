@@ -17,7 +17,7 @@ def normalExtractionOfPriceAndCount(sentence):
     if len(sentence)==0:
         return result
 
-    patterns.append(extractor('([0-9]{1,})+\sfor\s([0-9]{1,})+','([0-9]+)(?= for )','(?<=for )([0-9]+)'))
+    patterns.append(extractor(r'([0-9]{1,})+\sfor\s([0-9]{1,})+',r'([0-9]+)(?= for )',r'(?<=for )([0-9]+)'))
   
     for ext in patterns:
         result=ext.getPriceAndCount(sentence)
