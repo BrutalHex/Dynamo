@@ -1,7 +1,18 @@
-from module.pricing import *
+from module.pricingStrategy import *
 from supermarket import *
 
+def preparation():
+    str='''
+    A     50       3 for 130
+    B     30       2 for 45
+    C     20
+    D     15
+    '''
+    setPricingCriteria(str)
+
+
 def test_answer():
+    preparation()
     assert calculatePrice("") == 0
     assert calculatePrice("A")== 50
     assert calculatePrice("AB")== 80
@@ -17,10 +28,11 @@ def test_answer():
     assert calculatePrice("DABABA")==190
 
 def test_incremental():
+    preparation()
     items=''
     assert calculatePrice(items) == 0
     items+="A"  
-    assert calculatePrice(items)== 50 
+    assert calculatePrice(items)== 50
     items+="B" 
     assert calculatePrice(items)== 80 
     items+="A"  
@@ -29,3 +41,5 @@ def test_incremental():
     assert calculatePrice(items)==160
     items+="B"  
     assert calculatePrice(items)==175
+
+
